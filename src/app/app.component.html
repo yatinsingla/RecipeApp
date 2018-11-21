@@ -1,11 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<app-header></app-header>
+<app-header (flagSelected) = "onFlagSelected($event)"></app-header>
 <div class="container">
   <div class="row">
-      <app-recipes></app-recipes>
-  </div>
-  <div class="row">
-    <app-shopping-list></app-shopping-list>
-  </div>
+    <div class="col-md-12">
+        <app-recipes *ngIf="newString === 'recipe'"></app-recipes>
+        <app-shopping-list *ngIf="newString === 'shopping-list'"></app-shopping-list>
+    </div>
 </div>
