@@ -1,10 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<app-header (flagSelected) = "onFlagSelected($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-        <app-recipes *ngIf="newString === 'recipe'"></app-recipes>
-        <app-shopping-list *ngIf="newString === 'shopping-list'"></app-shopping-list>
+        <!-- <app-recipes *ngIf="newString === 'recipe'"></app-recipes>
+        <app-shopping-list *ngIf="newString === 'shopping-list'"></app-shopping-list> -->
+        <!-- rendering the routes -->
+        <router-outlet></router-outlet>
     </div>
 </div>
