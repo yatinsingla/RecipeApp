@@ -2,6 +2,7 @@ import { Recipe } from "./recipe.model";
 import { Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService {
@@ -25,6 +26,9 @@ export class RecipeService {
             ])
     ];
 
+    // as we are returning recipe.slice in getRecipe which is copy we need to update that
+    recipeChanged = new Subject<Recipe[]>();
+
     constructor(private slService: ShoppingListService){};
 
     getRecipe() {
@@ -38,6 +42,21 @@ export class RecipeService {
     getRecipeByID(id: number) {
         // could also use .slice that would return copy of recipe
         return this.recipes[id]; // id as index
+    }
+
+    addRecipe(recipe: Recipe) {
+        this.recipes.push(recipe);
+        this.recipeChanged.next(this.recipes.slice());
+    }
+
+    updateRecipe(id: number, newRecipe: Recipe) {
+        this.recipes[id] = newRecipe;
+        this.recipeChanged.next(this.recipes.slice());
+    }
+
+    deleteRecipe(id: number) {
+        this.recipes.splice(id, 1);
+        this.recipeChanged.next(this.recipes.slice());
     }
     
 }
