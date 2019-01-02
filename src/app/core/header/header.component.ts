@@ -1,9 +1,8 @@
 import { Component } from "@angular/core";
 import { Response } from '@angular/http';
 
-import { ServerService } from '../shared/server.service';
-import { AuthService } from '../auth/auth.service';
-import { auth } from "firebase";
+import { ServerService } from '../../shared/server.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -29,5 +28,9 @@ export class HeaderComponent {
 
     onLogout() {
         this.authService.logout();
+    }
+
+    isAuthenticated() {
+        return this.authService.isAuthenticated(); // moved the service access from template to typescript
     }
 }
