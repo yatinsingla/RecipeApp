@@ -12,7 +12,7 @@ import { ServerService } from './shared/server.service';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-gaurd.service';
 // other modules
-import { RecipesModule } from './recipes/recipes.modules';
+import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
